@@ -1,0 +1,146 @@
+.navbar {
+    height: 13vh;
+    width: 100vw;
+    background: #07794d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    z-index: 2;
+    top: 0px;
+  }
+  
+  .navbar-logo {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    width: 7rem;
+    justify-content: space-evenly;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .mainlogo{
+    display: block;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 10px;
+  }
+  
+  .nav-items {
+    width: 65vw;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+  }
+  
+  .nav-item {
+    list-style: none;
+    margin-left: 2rem;
+  }
+  
+  .nav-item a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 0.9rem;
+    padding: 3px 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.2s all ease-out;
+  }
+  
+  .nav-item a:hover {
+    background: #1f4d3c;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+  
+  .nav-item a span {
+    margin-left: 0.7rem;
+    font-size: 1.3rem;
+  }
+  
+  .sidebar-toggle {
+    width: 65vw;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .sidebar-toggle-logo {
+    font-size: 1.5rem;
+    color: whitesmoke;
+    cursor: pointer;
+    margin-right: 1.5rem;
+  }
+  
+  .sidebar {
+    width: 16rem;
+    background: #1b1919;
+    height: 90vh;
+    position: fixed;
+    top: 13vh;
+    left: -100%;
+    transition: 0.3s all ease-in-out;
+    z-index: 2;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .sidebar-items {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.2s all ease-out;
+  }
+  
+  .sidebar-item {
+    list-style: none;
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+  }
+  
+  .sidebar-item a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s all ease-out;
+    margin-right: 1.0rem;
+  }
+  
+  .sidebar-item a span {
+    margin-left: 1.0rem;
+    font-size: 1.4rem;
+  }
+  
+  .sidebar-item a:hover {
+    background: tomato;
+  }
+  
+  .sidebar .btn {
+    margin-top: 2.4rem;
+    width: 3rem;
+    margin-left: 1.0rem;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .sidebar.active {
+      width: 5rem;
+    }
+  
+    .sidebar-item a span {
+      display: none;
+    }
+  }
+  

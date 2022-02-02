@@ -1,0 +1,38 @@
+.feed{
+    display: flex;
+    margin: auto;
+    max-width: 1200;
+}
+.profile{
+    padding: 10px;
+}
+.post{
+    background-color:white ;
+    width: 56vw;
+    border-radius: 8px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .feed{
+        flex-direction: column;
+    }
+    .profile{
+        display: none;
+    }
+    .posts{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .post{
+        width: 80vw;
+        height: 55vh;
+        box-shadow: 3px 3px black;
+    }
+  }
