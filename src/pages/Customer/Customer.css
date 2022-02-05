@@ -1,0 +1,37 @@
+.customers{
+    width: 100vw;
+    height: 87vh;
+    margin-top: -20px;
+    padding: 10px;
+    background-color: rgb(209, 206, 206);
+    
+}
+
+.customer{
+    width:100vw;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(209, 206, 206);
+}
+
+.product{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    width: 280px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 2px 2px 2px black;
+    margin: 2rem;
+}

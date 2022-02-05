@@ -2,13 +2,16 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Dashboard from "./pages/Dashboard";
-import Customers from "./pages/Customers";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Customers from "./pages/Customer/Customers";
 import Farmers from "./pages/Farmers";
 import Admin from "./pages/Admin";
 import Orders from "./pages/Orders";
+import AOS from 'aos'
+import 'aos/dist/aos.css';
 
 function App() {
+  AOS.init({duration : 3000})
   return (
     <>
       <BrowserRouter>

@@ -6,6 +6,7 @@ import Feed from '../components/Feed'
 function Farmers() {
   const [toggle, settoggle] = useState(true);
   const [feed, setFeed] = useState(true);
+  const heading = "Login"
   const handleClick = () =>{
     settoggle(!toggle)
   }
@@ -14,7 +15,7 @@ function Farmers() {
   }
   return (
     <div>
-        {feed?<div>{toggle?<Login handleClick={handleClick} handleFeed={handleFeed}/>:<Register handleClick={handleClick}/>}</div>:<Feed/>}
+        {feed?<div>{toggle?<Login heading={heading} handleClick={handleClick} handleFeed={handleFeed}/>:<Register handleClick={handleClick}/>}</div>:<Feed/>}
     </div>
     
   );

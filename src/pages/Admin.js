@@ -1,9 +1,11 @@
 import React from "react";
+import Login from '../components/Login'
 
 function Admin() {
+  const heading = "Admin Panel"
   return (
     <div>
-      <h1 className="admin">Admin</h1>
+      <Login heading={heading}/>
     </div>
   );
 }

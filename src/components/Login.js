@@ -28,7 +28,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Login({handleClick,handleFeed}) {
+export default function Login({handleClick,handleFeed,heading}) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -55,7 +55,7 @@ export default function Login({handleClick,handleFeed}) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            <b>{heading}</b>
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField

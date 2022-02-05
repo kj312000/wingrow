@@ -5,6 +5,7 @@ html,
 body {
   position: relative;
   height: 100%;
+  background-color: rgb(224, 222, 222);
 }
 
 body {
