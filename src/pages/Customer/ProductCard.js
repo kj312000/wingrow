@@ -1,11 +1,14 @@
 import React from 'react';
-import {data} from '../../components/data'
 import '../Customer/Customer.css'
+import {data} from '../../components/data'
 
 function ProductCard({Type}) {
-    console.log(Type);
+
+    console.log(data);
+
   return( 
       <>
+        {(typeof data === 'undefined')?(<p>Loading....</p>):
         <div className='product'>
         {data.map(e=>{
             const {name ,category , id , image , price , description} = e
@@ -21,6 +24,7 @@ function ProductCard({Type}) {
             }
         })}        
         </div>
+        }
     </>
         )
 }
