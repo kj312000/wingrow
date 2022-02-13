@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Customers from "./pages/Customer/Customers";
-import Farmers from "./pages/Farmers";
+import Farmers from "./pages/Farmers/Farmers";
 import Admin from "./pages/Admin";
 import Orders from "./pages/Orders";
 import AOS from 'aos'

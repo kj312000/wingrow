@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Feed from '../pages/Farmers/Feed'
 
 function Copyright(props) {
   return (
@@ -28,7 +29,34 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Register({handleClick}) {
+export default function Register() {
+  const [user, setUser] = useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    phone:"",
+    password:""
+  })
+  const [toggle, settoggle] = useState(true)
+  const [userData, setUserData] = useState([user])
+  
+
+  const handleClick=()=>{
+    const temp = [...userData]
+    temp.unshift(user)
+    setUserData(temp)
+    setUser({
+      firstName:"",
+    lastName:"",
+    email:"",
+    phone:"",
+    password:""
+    })
+    settoggle(!toggle)
+  }
+
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -37,10 +65,18 @@ export default function Register({handleClick}) {
       email: data.get('email'),
       password: data.get('password'),
     });
-  };
+  }
+  const handleRegister = (e)=>{
+    const {name , value} = e.target
+    setUser(prevState => ({
+      ...prevState,
+      [name]: value
+  }))
 
+  }
   return (
-    <ThemeProvider theme={theme}>
+    <>
+    {toggle?<ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
@@ -65,6 +101,8 @@ export default function Register({handleClick}) {
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
+                  value={user.firstName}
+                  onChange={handleRegister}
                   required
                   fullWidth
                   id="firstName"
@@ -77,6 +115,8 @@ export default function Register({handleClick}) {
                   required
                   fullWidth
                   id="lastName"
+                  value={user.lastName}
+                  onChange={handleRegister}
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
@@ -89,6 +129,8 @@ export default function Register({handleClick}) {
                   id="email"
                   label="Email Address"
                   name="email"
+                  value={user.email}
+                  onChange={handleRegister}
                   autoComplete="email"
                 />
               </Grid>
@@ -97,6 +139,8 @@ export default function Register({handleClick}) {
                   required
                   fullWidth
                   name="password"
+                  value={user.password}
+                  onChange={handleRegister}
                   label="Password"
                   type="password"
                   id="password"
@@ -107,8 +151,10 @@ export default function Register({handleClick}) {
                 <TextField
                   required
                   fullWidth
-                  name="phonenumber"
+                  name="phone"
                   label="Phone Number"
+                  value={user.phone}
+                  onChange={handleRegister}
                   type="phonenumber"
                   id="phonenumber"
                   autoComplete="phonenumber"
@@ -134,6 +180,7 @@ export default function Register({handleClick}) {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>
+    </ThemeProvider>:<Feed/>}
+    </>
   );
 }

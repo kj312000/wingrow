@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import '../components/Feed.css'
+import '../Farmers/Feed.css'
 
-function Post({author, content, time, likeCount}) {
+function Post({author,title, content, time, likeCount,image}) {
     const [like, setLike] = useState(false);
     
     return (
         <div className='post'>
             <div style={{display:'flex', alignItems:'center', paddingBottom: '10px'}}>
                 <div style={{paddingLeft:'10px', paddingRight:"10px"}}>
-                    <img src="https://tse3.mm.bing.net/th?id=OIP.8B35pMvazT4i0XTvJ5Mx0AHaEX&pid=Api&P=0&w=293&h=173" alt="" height={50} width={50} style={{borderRadius: '30px'}}/>
+                    <img src={image} alt="" height={50} width={50} style={{borderRadius: '30px'}}/>
                 </div>
                 <div>
-                    <span>{author.name}</span>
+                    <b><span>{author}</span></b>
                     <br/>
-                    {author.title}
+                    {title}
                     <br/>
                     {time}
                 </div>
@@ -22,7 +22,7 @@ function Post({author, content, time, likeCount}) {
                 {content}
             </div>
             <div style={{padding: '10px', textAlign: 'center'}}>
-                <img src="https://tse3.mm.bing.net/th?id=OIP.8B35pMvazT4i0XTvJ5Mx0AHaEX&pid=Api&P=0&w=293&h=173" width="50%" alt=""/>
+                <img src={image} width="50%" alt=""/>
 
             </div>
             <div style={{textAlign: 'justify', padding: 10, color: 'GrayText'}}>
