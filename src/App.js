@@ -10,6 +10,7 @@ import Orders from "./pages/Orders";
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 import Cart from "./pages/Customer/Cart";
+import CartState from "./context/CartState";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        <CartState>
         <div className="content">
         <Switch>
           <Route path="/" exact component={Dashboard}></Route>
@@ -28,6 +30,7 @@ function App() {
           <Route path="/cart" component={Cart}></Route>
         </Switch>
         </div>
+        </CartState>
       </BrowserRouter>
     </>
   );

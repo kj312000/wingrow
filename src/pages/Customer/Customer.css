@@ -69,6 +69,7 @@
 
 .cart_items{
     flex: 1;
+    overflow: auto;
 }
 
 .heading_cart{

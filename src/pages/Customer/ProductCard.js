@@ -1,17 +1,23 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import '../Customer/Customer.css'
 import {data} from '../../components/data'
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import Context from '../../context/Context';
 
-function ProductCard({Type,itemCount,setItemCount,setcartData}) {
+function ProductCard({Type,itemCount,setItemCount}) {
+    const res = useContext(Context)
+    const {Data , setData} = res
     
     function increment(id){
         setItemCount(itemCount + 1)
-        const result = data.filter((e)=>{return e.id===id})
-        setcartData(result)
+        const result = data.find((e)=>{return e.id===id})
+        const res = [...Data]
+        res.push(result)
+        setData(res)
+        
     }
     function decrement(id){
         setItemCount(Math.max(itemCount - 1, 0))
