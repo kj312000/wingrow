@@ -9,6 +9,8 @@ import Admin from "./pages/Admin";
 import Orders from "./pages/Orders";
 import AOS from 'aos'
 import 'aos/dist/aos.css';
+import Cart from "./pages/Customer/Cart";
+
 
 function App() {
   AOS.init({duration : 3000})
@@ -23,6 +25,7 @@ function App() {
           <Route path="/farmers" component={Farmers}></Route>
           <Route path="/admin" component={Admin}></Route>
           <Route path="/orders" component={Orders}></Route>
+          <Route path="/cart" component={Cart}></Route>
         </Switch>
         </div>
       </BrowserRouter>

@@ -6,11 +6,18 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
-function ProductCard({Type,itemCount,setItemCount}) {
-
-    console.log(data);
-
-  return( 
+function ProductCard({Type,itemCount,setItemCount,setcartData}) {
+    
+    function increment(id){
+        setItemCount(itemCount + 1)
+        const result = data.filter((e)=>{return e.id===id})
+        setcartData(result)
+    }
+    function decrement(id){
+        setItemCount(Math.max(itemCount - 1, 0))
+    }
+  
+    return( 
       <>
         {(typeof data === 'undefined')?(<p>Loading....</p>):
         <div className='product'>
@@ -24,17 +31,14 @@ function ProductCard({Type,itemCount,setItemCount}) {
                     <p>Rs:{price}</p>
                     <ButtonGroup>
                         <Button
-                            onClick={() => {
-                            setItemCount(Math.max(itemCount - 1, 0));
-                            }}
+                            key={id}
+                            onClick={()=>decrement(id)}
                         >
                             {" "}
                             <RemoveIcon fontSize="small" />
                         </Button>
                         <Button
-                            onClick={() => {
-                            setItemCount(itemCount + 1);
-                            }}
+                            onClick={()=>increment(id)}
                         >
                             {" "}
                             <AddIcon fontSize="small" />
