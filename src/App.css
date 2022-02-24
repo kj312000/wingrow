@@ -4,7 +4,7 @@
 html,
 body {
   position: relative;
-  height: 100%;
+  min-height: 100vh;
   background-color: rgb(224, 222, 222);
 }
 
