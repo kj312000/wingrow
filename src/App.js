@@ -11,6 +11,9 @@ import 'aos/dist/aos.css';
 import ProductsPage from "./pages/Customer/Products";
 import CartPage from "./pages/Customer/Cart";
 import GlobalState from "./context/GlobalState";
+import Booking from "./pages/Farmers/Booking";
+import StallDetails from "./pages/Farmers/StallDetails";
+
 
 
 function App() {
@@ -22,12 +25,14 @@ function App() {
         <Navbar />
         <div className="content">
         <Switch>
-          <Route path="/" exact component={Dashboard}></Route>
-          <Route path="/farmers" component={Farmers}></Route>
-          <Route path="/admin" component={Admin}></Route>
-          <Route path="/orders" component={Orders}></Route>
+          <Route path="/" exact component={Dashboard}/>
+          <Route path="/farmers" component={Farmers} exact />
+          <Route path="/admin" component={Admin} exact />
+          <Route path="/orders" component={Orders} exact />
           <Route path="/customers" component={ProductsPage} exact />
           <Route path="/cart" component={CartPage} exact />
+          <Route path="/bookings" component={Booking}/>
+          <Route path="/bookingdetails/:id" component={StallDetails} exact />
         </Switch>
         </div>
       </BrowserRouter>

@@ -1,10 +1,12 @@
 import React,{useState} from 'react';
 import Post from './Post'
 import Profile from './Profile'
+import SideProfile from './SideProfile'
 import '../Farmers/Feed.css'
 import { styled, Box } from '@mui/system';
 import ModalUnstyled from '@mui/base/ModalUnstyled';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -84,7 +86,8 @@ function Feed() {
         })
     }
 
-  return<div className='feed'>
+  return(
+    <div className='feed'>
             <div className='profile'>
                 <Profile/>
             </div>
@@ -95,7 +98,7 @@ function Feed() {
             })}
             </div>
             <div  className='profile'>
-            <Profile/>
+            <SideProfile/>
                 <div>
       <button type="button" onClick={handleOpen} style={{padding:"5px",position:"fixed",boxShadow:"3px 3px 3px 3px",bottom:"50px",right:"50px"}}>
       <AddCircleOutlineIcon/>
@@ -116,8 +119,8 @@ function Feed() {
         </Box>
       </StyledModal>
     </div>
-            </div>
-  </div>;
+   </div>
+  </div>)
 }
 
 export default Feed;
