@@ -19,7 +19,7 @@ const GlobalState = props => {
     [
       {
         id:1,
-      city:"pune",
+      city:"Pune",
       address:"address1",
       capacity:"40",
       day:"monday-friday",
@@ -27,7 +27,7 @@ const GlobalState = props => {
       },
       {
         id:2,
-        city:"pune",
+        city:"Pune",
       address:"address2",
       capacity:"30",
       day:"monday-friday",
@@ -35,7 +35,7 @@ const GlobalState = props => {
       },
       {
         id:3,
-        city:"pune",
+        city:"Pune",
       address:"address3",
       capacity:"50",
       day:"monday-friday",
@@ -43,7 +43,7 @@ const GlobalState = props => {
       },
       {
         id:4,
-        city:"pune",
+        city:"Pune",
       address:"address4",
       capacity:"40",
       day:"monday-friday",
@@ -51,7 +51,7 @@ const GlobalState = props => {
       },
       {
         id:5,
-        city:"pune",
+        city:"Pune",
       address:"address5",
       capacity:"20",
       day:"monday-friday",
@@ -59,7 +59,7 @@ const GlobalState = props => {
       },
       {
         id:6,
-        city:"nashik",
+        city:"Nashik",
       address:"address1",
       capacity:"40",
       day:"monday-friday",
@@ -67,7 +67,7 @@ const GlobalState = props => {
     },
     {
       id:7,
-      city:"nashik",
+      city:"Nashik",
       address:"address2",
       capacity:"30",
       day:"monday-friday",
@@ -75,7 +75,7 @@ const GlobalState = props => {
     },
     {
       id:8,
-      city:"nashik",
+      city:"Nashik",
       address:"address3",
       capacity:"40",
       day:"monday-friday",
@@ -83,7 +83,7 @@ const GlobalState = props => {
     },
       {
         id:9,
-        city:"mumbai",
+        city:"Mumbai",
       address:"address1",
       capacity:"40",
       day:"monday-friday",
@@ -91,7 +91,7 @@ const GlobalState = props => {
       },
       {
         id:10,
-        city:"mumbai",
+        city:"Mumbai",
       address:"address2",
       capacity:"30",
       day:"monday-friday",
@@ -99,7 +99,7 @@ const GlobalState = props => {
       },
       {
         id:11,
-        city:"mumbai",
+        city:"Mumbai",
       address:"address3",
       capacity:"40",
       day:"monday-friday",

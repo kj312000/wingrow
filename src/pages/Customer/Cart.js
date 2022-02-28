@@ -12,14 +12,17 @@ const CartPage = props => {
           return count + curItem.quantity;
         }, 0)}
       />
+      <div style={{display:"flex",justifyContent:"center",alignitems:"center",flexDirection:"column"}}>
       <main className="cart">
         {context.cart.length <= 0 && <p>No Item in the Cart!</p>}
         <ul>
           {context.cart.map(cartItem => (
             <li key={cartItem.id}>
               <div>
-                <strong>{cartItem.title}</strong> - ${cartItem.price} (
-                {cartItem.quantity})
+                <strong>{cartItem.title}</strong> - ${cartItem.price}
+              </div>
+              <div>
+                <h3>Qty - {cartItem.quantity}</h3>
               </div>
               <div>
                 <button
@@ -35,6 +38,11 @@ const CartPage = props => {
           ))}
         </ul>
       </main>
+      {context.cart.length!==0 &&
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center",margin:"16px",padding:"16px"}}>
+        <button>Confirm Order</button>
+      </div>}
+      </div>
     </React.Fragment>
   );
 };

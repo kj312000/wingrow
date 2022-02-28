@@ -17,11 +17,11 @@ function Booking() {
                         <>
                         <Link className="link_details" to={`./bookingdetails/${index+1}`}>
                         <div key={index} className="cities">
-                            <div>City : {e.city}</div>
-                            <div>{e.address}</div>
+                            <div>City : <b>{e.city}</b></div>
+                            <div><b>{e.address}</b></div>
                             <div>
-                                <p>{e.day}</p>
-                                <p>{e.time}</p>
+                                <p>Day - <b>{e.day}</b></p>
+                                <p>Date - <b>{e.city}</b></p>
                             </div>
                         </div>
                         </Link>

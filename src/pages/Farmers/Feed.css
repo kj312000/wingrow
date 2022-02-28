@@ -49,6 +49,7 @@
 }
 .link_details {
     color: rgb(0, 0, 0);
+    text-decoration: none;
   }
 
 @media screen and (max-width: 800px) {
