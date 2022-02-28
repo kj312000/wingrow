@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Farmers from "./pages/Farmers/Farmers";
@@ -24,16 +24,16 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className="content">
-        <Switch>
-          <Route path="/" exact component={Dashboard}/>
-          <Route path="/farmers" component={Farmers} exact />
-          <Route path="/admin" component={Admin} exact />
-          <Route path="/orders" component={Orders} exact />
-          <Route path="/customers" component={ProductsPage} exact />
-          <Route path="/cart" component={CartPage} exact />
-          <Route path="/bookings" component={Booking}/>
-          <Route path="/bookingdetails/:id" component={StallDetails} exact />
-        </Switch>
+        <Routes>
+          <Route path="/" exact element={<Dashboard/>}/>
+          <Route path="/farmers" element={<Farmers/>}/>
+          <Route path="/admin" element={<Admin/>}/>
+          <Route path="/orders" element={<Orders/>}/>
+          <Route path="/customers" element={<ProductsPage/>}/>
+          <Route path="/cart" element={<CartPage/>}/>
+          <Route path="/farmers/bookings" element={<Booking/>}/>
+          <Route path="/farmers/bookings/bookingdetails/:id" element={<StallDetails/>}/>
+        </Routes>
         </div>
       </BrowserRouter>
       </GlobalState>

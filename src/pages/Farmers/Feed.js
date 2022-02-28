@@ -100,16 +100,16 @@ function Feed() {
             <div  className='profile'>
             <SideProfile/>
                 <div>
-      <button type="button" onClick={handleOpen} style={{padding:"5px",position:"fixed",boxShadow:"3px 3px 3px 3px",bottom:"50px",right:"50px"}}>
-      <AddCircleOutlineIcon/>
-      </button>
-      <StyledModal
-        aria-labelledby="unstyled-modal-title"
-        aria-describedby="unstyled-modal-description"
-        open={open}
-        onClose={handleClose}
-        BackdropComponent={Backdrop}
-      >
+              <button type="button" onClick={handleOpen} style={{padding:"5px",position:"fixed",boxShadow:"3px 3px 3px 3px",bottom:"50px",right:"50px"}}>
+              <AddCircleOutlineIcon/>
+              </button>
+              <StyledModal
+                aria-labelledby="unstyled-modal-title"
+                aria-describedby="unstyled-modal-description"
+                open={open}
+                onClose={handleClose}
+                BackdropComponent={Backdrop}
+              >
         <Box sx={style}>
           <h1>Create a post</h1>
           <input type="text" placeholder='Enter your name' value={state.author} name="author" onChange={handleChange}/>
