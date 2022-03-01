@@ -1,9 +1,10 @@
 import React from "react";
 import ShopContext from "../../context/shop-context";
 import MainNavigation from "../../components/MainNavigation";
-import "./Products.css";
+import "./customer_styles.css";
+import Button from './Button'
 
-const ProductsPage = props => {
+const ProductsPage = () => {
   return (
     <ShopContext.Consumer>
       {context => (
@@ -13,23 +14,8 @@ const ProductsPage = props => {
               return count + curItem.quantity;
             }, 0)}
           />
-          <main className="products">
-            <ul>
-              {context.products.map(product => (
-                <li key={product.id}>
-                  <div>
-                    <strong>{product.title}</strong> - ${product.price}
-                  </div>
-                  <div>
-                    <button
-                      onClick={context.addProductToCart.bind(this, product)}
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <main className="customer_products">
+             <Button product={context.products}/>:
           </main>
         </React.Fragment>
       )}

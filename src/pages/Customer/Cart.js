@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ShopContext from "../../context/shop-context";
 import MainNavigation from "../../components/MainNavigation";
-import "./Cart.css";
+import "./customer_styles.css";
 
 const CartPage = props => {
   const context = useContext(ShopContext);
@@ -12,14 +12,16 @@ const CartPage = props => {
           return count + curItem.quantity;
         }, 0)}
       />
-      <div style={{display:"flex",justifyContent:"center",alignitems:"center",flexDirection:"column"}}>
       <main className="cart">
         {context.cart.length <= 0 && <p>No Item in the Cart!</p>}
-        <ul>
+        <div className="cart_container">
           {context.cart.map(cartItem => (
-            <li key={cartItem.id}>
+            <div className="cart_item" key={cartItem.id}>
               <div>
                 <strong>{cartItem.title}</strong> - ${cartItem.price}
+              </div>
+              <div>
+                    <img className="cart_img" src={cartItem.image} alt="img"/>
               </div>
               <div>
                 <h3>Qty - {cartItem.quantity}</h3>
@@ -34,15 +36,14 @@ const CartPage = props => {
                   Remove from Cart
                 </button>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </main>
       {context.cart.length!==0 &&
         <div style={{display:"flex",alignItems:"center",justifyContent:"center",margin:"16px",padding:"16px"}}>
         <button>Confirm Order</button>
       </div>}
-      </div>
     </React.Fragment>
   );
 };

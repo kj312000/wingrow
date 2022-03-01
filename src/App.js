@@ -13,6 +13,7 @@ import CartPage from "./pages/Customer/Cart";
 import GlobalState from "./context/GlobalState";
 import Booking from "./pages/Farmers/Booking";
 import StallDetails from "./pages/Farmers/StallDetails";
+import ProductDetails from "./pages/Customer/ProductDetails";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/cart" element={<CartPage/>}/>
           <Route path="/farmers/bookings" element={<Booking/>}/>
           <Route path="/farmers/bookings/bookingdetails/:id" element={<StallDetails/>}/>
+          <Route path="/customers/productdetails/:item" element={<ProductDetails/>}/>
         </Routes>
         </div>
       </BrowserRouter>
