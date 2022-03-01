@@ -6,7 +6,6 @@ import MainNavigation from "../../components/MainNavigation";
 
 
 
-
 function ProductDetails() {
     const {item} = useParams()
   return (
@@ -28,7 +27,7 @@ function ProductDetails() {
                                 <h2><strong>{product.title}</strong></h2>
                             </div>
                             <div className='img_container'>
-                                <img className='products_img' src={product.image} alt="img"/>
+                                <img className='products_img' src={`../.${product.image}`} alt="img"/>
                                 <div className='products_sub_details'>
                                   <div><h1>Price : {product.price}</h1></div>
                                   <div>No of Kg : 1</div>
