@@ -77,10 +77,10 @@ function Location() {
 ]
   return <div className="main_location">
       {
-          locations.map((e)=>{
+          locations.map((e,i)=>{
             const {name,address,time,day} = e;
             return(
-                <div className='location'>
+                <div key={i} className='location'>
                     <a style={{color:"black"}} href={address}>
                     <img className='location_img' src="https://tse1.mm.bing.net/th?id=OIP.bpW3ZINuqTgSZpZQj_Th2wHaHa&pid=Api&P=0&w=168&h=168" alt="logo" />
                     </a>

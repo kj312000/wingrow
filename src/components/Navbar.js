@@ -39,9 +39,9 @@ function Navbar() {
         </Link>
         {!mobile && (
           <ul className="nav-items">
-            {navItems.map((item) => {
+            {navItems.map((item,i) => {
               return (
-                <li key={item.id} className={item.nName}>
+                <li key={i} className={item.nName}>
                   <Link to={item.path}>
                     {item.icon}
                     <span>{item.title}</span>
@@ -71,10 +71,10 @@ function Navbar() {
 
       <div className={sidebar ? "sidebar active" : "sidebar"}>
         <ul className="sidebar-items">
-          {navItems.map((item) => {
+          {navItems.map((item,i) => {
             return (
               <li
-                key={item.id}
+                key={i}
                 className={item.sName}
                 onClick={() => setSidebar(false)}
               >

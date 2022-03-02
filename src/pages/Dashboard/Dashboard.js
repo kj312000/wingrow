@@ -101,7 +101,7 @@ function Dashboard() {
           <h1>1002 Tons</h1>
         </div>
         <div className="icons">
-          <ThumbUpIcon fontSize="large" color="Green"/>
+          <ThumbUpIcon fontSize="large"/>
           <h2>Total Revenue</h2>
           <h1>Rs 1.96 Cr</h1>
         </div>

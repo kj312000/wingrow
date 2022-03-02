@@ -10,17 +10,12 @@ const addProductToCart = (product, state) => {
   if (updatedItemIndex < 0) {
     updatedCart.push({ ...product, quantity: 1 });
   } else {
-    const updatedItem = {
-      ...updatedCart[updatedItemIndex]
-    };
-    updatedItem.quantity++;
-    updatedCart[updatedItemIndex] = updatedItem;
+    updatedCart[updatedItemIndex].value+=product.value
   }
   return { ...state, cart: updatedCart };
 };
 
 const removeProductFromCart = (productId, state) => {
-  console.log("Removing product with id: " + productId);
   const updatedCart = [...state.cart];
   const updatedItemIndex = updatedCart.findIndex(item => item.id === productId);
 

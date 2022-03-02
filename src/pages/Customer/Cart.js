@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext ,useState , useEffect } from "react";
 import ShopContext from "../../context/shop-context";
 import MainNavigation from "../../components/MainNavigation";
 import "./customer_styles.css";
 
 const CartPage = props => {
   const context = useContext(ShopContext);
+  const [Total, setTotal] = useState('')
+
+  useEffect(() => {
+    setTotal(
+      context.cart.reduce((acc, curr) => acc + Number(curr.price) * curr.value, 0)
+    );
+  }, [context.cart]);
   return (
     <React.Fragment>
       <MainNavigation
@@ -18,13 +25,14 @@ const CartPage = props => {
           {context.cart.map(cartItem => (
             <div className="cart_item" key={cartItem.id}>
               <div>
-                <strong>{cartItem.title}</strong> - ${cartItem.price}
+                <h3>{cartItem.title}</h3>
               </div>
               <div>
                     <img className="cart_img" src={cartItem.image} alt="img"/>
               </div>
               <div>
-                <h3>Qty - {cartItem.quantity}</h3>
+                <h4>Qty : {cartItem.value}Kg</h4>
+                <h4>Total : {Math.round(cartItem.value*cartItem.price)}Rs</h4>
               </div>
               <div>
                 <button
@@ -39,11 +47,15 @@ const CartPage = props => {
             </div>
           ))}
         </div>
-      </main>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+        <h3>Sub Total : {Math.round(Total)} Rs</h3>
+      </div>
       {context.cart.length!==0 &&
-        <div style={{display:"flex",alignItems:"center",justifyContent:"center",margin:"16px",padding:"16px"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
         <button>Confirm Order</button>
       </div>}
+      </main>
+      
     </React.Fragment>
   );
 };
