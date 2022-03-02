@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Farmers from "./pages/Farmers/Farmers";
@@ -14,6 +13,7 @@ import GlobalState from "./context/GlobalState";
 import Booking from "./pages/Farmers/Booking";
 import StallDetails from "./pages/Farmers/StallDetails";
 import ProductDetails from "./pages/Customer/ProductDetails";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
 
@@ -35,7 +35,7 @@ function App() {
           <Route path="/farmers/bookings" element={<Booking/>}/>
           <Route path="/farmers/bookings/bookingdetails/:id" element={<StallDetails/>}/>
           <Route path="/customers/productdetails/:item" element={<ProductDetails/>}/>
-        </Routes>
+          </Routes>
         </div>
       </BrowserRouter>
       </GlobalState>
