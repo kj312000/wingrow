@@ -1,88 +1,85 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-//import FormControlLabel from '@mui/material/FormControlLabel';
-//import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React , {useState , useContext} from 'react'
+import firebase from './firebase'
+import ShopContext from '../context/shop-context';
+import { Navigate } from 'react-router-dom';
+import './Otp.css'
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://www.wingrowagritech.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+const Otp = () => {
+  const context = useContext(ShopContext);
+  const [toggle, setToggle] = useState(true)
+  const {phone} = context.user
 
-const theme = createTheme();
+  console.log(phone)
+  const [state, setState] = useState({
+    mobile:"",
+    otp:""
+  })
+  const handleChange = (e) =>{
+    const {name, value } = e.target
+    setState({
+        [name]: value
+      })
+  }
 
-export default function Login({handleClick,handleFeed,heading}) {
-  const handleSubmit = () => {
-    
-  };
+  const onSignInSubmit = (e) => {
+    e.preventDefault()
+    configureCaptcha()
+    const phoneNumber = "+91" + phone
+    console.log(phoneNumber)
+    const appVerifier = window.recaptchaVerifier;
+    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+          window.confirmationResult = confirmationResult;
+          alert("OTP has been sent")
+          setToggle(!toggle)
+        }).catch((error) => {
+          alert("SMS not sent")
+        });
+  }
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            <b>{heading}</b>
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="otp"
-              label="OTP"
-              name="otp"
-              autoComplete="otp"
-              autoFocus
-            />
-            <div>OTP is valid for 10 Minutes.</div>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleFeed}
-            >
-              Submit
-            </Button>
-            <Grid container>
-                <Grid item>
-                <button onClick={handleClick}>
-                  Not Received? Click here to Resend
-                </button>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
-  );
-}
+  const configureCaptcha = () =>{
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': (response) => {
+        onSignInSubmit();
+        console.log("Recaptca varified")
+      },
+      defaultCountry: "IN"
+    });
+  }
+  
+  const onSubmitOTP = (e) =>{
+    e.preventDefault()
+    const code = state.otp
+    console.log(code)
+    window.confirmationResult.confirm(code).then((result) => {
+      const user = result.user;
+      console.log(JSON.stringify(user))
+      alert("User is verified")
+      Navigate('./feed')
+    }).catch((error) => {
+      alert("Wrong OTP")
+    });
+  }
+    return (
+      <div>
+        {toggle?
+        <div className='otp_verify'>
+          <h2>OTP Verification</h2>
+        <form onSubmit={onSignInSubmit}>
+          <div id="sign-in-button"></div>
+          <h3>{phone}</h3>
+          <button type="submit">Send Otp</button>
+        </form>
+        </div>:
+        <div className='otp_verify'>
+        <h2>Enter OTP</h2>
+        <form onSubmit={onSubmitOTP}>
+          <input type="number" name="otp" placeholder="Enter OTP here" required onChange={handleChange}/>
+          <button type="submit">Submit</button>
+        </form>
+        </div>}
+      </div>
+    )
+  }
+export default Otp

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,7 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Feed from '../pages/Farmers/Feed'
+// import Feed from '../pages/Farmers/Feed'
+import { useNavigate } from 'react-router-dom';
+import ShopContext from '../context/shop-context';
+
 
 function Copyright(props) {
   return (
@@ -30,41 +33,14 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Register() {
-  const [user, setUser] = useState({
-    firstName:"",
-    lastName:"",
-    email:"",
-    phone:"",
-    password:""
-  })
-  const [toggle, settoggle] = useState(true)
-  const [userData, setUserData] = useState([user])
+  const context = useContext(ShopContext);
+  const {user , setUser} = context
   
-
-  const handleClick=()=>{
-    const temp = [...userData]
-    temp.unshift(user)
-    setUserData(temp)
-    setUser({
-      firstName:"",
-    lastName:"",
-    email:"",
-    phone:"",
-    password:""
-    })
-    settoggle(!toggle)
-  }
-
-
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    navigate('./otp')
   }
   const handleRegister = (e)=>{
     const {name , value} = e.target
@@ -76,7 +52,7 @@ export default function Register() {
   }
   return (
     <>
-    {toggle?<ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm">
         <CssBaseline />
         <Box
@@ -95,7 +71,7 @@ export default function Register() {
           <Typography component="h1" variant="h5">
            Register Here!!
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -145,6 +121,7 @@ export default function Register() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  
                 />
               </Grid>
               <Grid item xs={12}>
@@ -172,7 +149,6 @@ export default function Register() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              onClick={handleClick}
             >
               Confirm
             </Button>
@@ -180,7 +156,7 @@ export default function Register() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-    </ThemeProvider>:<Feed/>}
+    </ThemeProvider>
     </>
   );
 }

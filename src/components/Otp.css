@@ -1,0 +1,10 @@
+.otp_verify{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    border: 1px black solid;
+    margin:  6rem auto;
+}

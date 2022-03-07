@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer , useState } from "react";
 import ShopContext from "./shop-context";
 import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from "./reducers";
 
@@ -106,7 +106,13 @@ const GlobalState = props => {
       }
     ]
 
-
+    const [user, setUser] = useState({
+      firstName:"",
+      lastName:"",
+      email:"",
+      phone:"",
+      password:""
+    })
 
 
 
@@ -131,7 +137,9 @@ const GlobalState = props => {
         cart: cartState.cart,
         addProductToCart: addProductToCart,
         removeProductFromCart: removeProductFromCart,
-        bookingStalls : bookingStalls
+        bookingStalls : bookingStalls,
+        user:user,
+        setUser:setUser
       }}
     >
       {props.children}

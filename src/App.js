@@ -14,6 +14,8 @@ import Booking from "./pages/Farmers/Booking";
 import StallDetails from "./pages/Farmers/StallDetails";
 import ProductDetails from "./pages/Customer/ProductDetails";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Otp from "./components/Otp";
+import Feed from "./pages/Farmers/Feed";
 
 
 
@@ -35,6 +37,8 @@ function App() {
           <Route path="/farmers/bookings" element={<Booking/>}/>
           <Route path="/farmers/bookings/bookingdetails/:id" element={<StallDetails/>}/>
           <Route path="/customers/productdetails/:item" element={<ProductDetails/>}/>
+          <Route path="/farmers/otp" element={<Otp/>}/>
+          <Route path="/farmers/feed" element={<Feed/>}/>
           </Routes>
         </div>
       </BrowserRouter>
