@@ -40,7 +40,7 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('./otp')
+    navigate('../otp')
   }
   const handleRegister = (e)=>{
     const {name , value} = e.target

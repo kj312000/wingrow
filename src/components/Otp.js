@@ -1,13 +1,14 @@
 import React , {useState , useContext} from 'react'
 import firebase from './firebase'
 import ShopContext from '../context/shop-context';
-import { Navigate } from 'react-router-dom';
 import './Otp.css'
+import { useNavigate } from 'react-router-dom';
 
 const Otp = () => {
   const context = useContext(ShopContext);
   const [toggle, setToggle] = useState(true)
   const {phone} = context.user
+  const navigate = useNavigate()
 
   console.log(phone)
   const [state, setState] = useState({
@@ -34,6 +35,7 @@ const Otp = () => {
           setToggle(!toggle)
         }).catch((error) => {
           alert("SMS not sent")
+          console.log(error)
         });
   }
 
@@ -56,9 +58,10 @@ const Otp = () => {
       const user = result.user;
       console.log(JSON.stringify(user))
       alert("User is verified")
-      Navigate('./feed')
+      navigate('../feed')
     }).catch((error) => {
       alert("Wrong OTP")
+      console.log(error)
     });
   }
     return (
